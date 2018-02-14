@@ -15,7 +15,7 @@ public class Item {
     private long _id;
     private String name;
     private BigDecimal price; 
-    
+    private int _temp;
     
     public Item (String name, BigDecimal price) 
     {
