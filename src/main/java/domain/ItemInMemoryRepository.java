@@ -25,7 +25,7 @@ public class ItemInMemoryRepository {
         
         for (Item item : itemRepository) 
         {
-            if (item.getID() == ID) 
+            if (item.getId() == ID) 
             {
                 return item;
             }
@@ -47,7 +47,7 @@ public class ItemInMemoryRepository {
     public void updateItem (Item item) 
     {
         
-        deleteItem(item.getID());
+        deleteItem(item.getId());
         addItem(item);
         
     }

@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package application;
+import db.DatabaseConnectionItem;
+import domain.ItemInMemoryRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -16,5 +18,10 @@ public class Application {
     
 	public static void main(String args[]) throws Exception{
 		SpringApplication.run(Application.class);
+                DatabaseConnectionItem rep = new DatabaseConnectionItem();
+                
+                rep.Demo();
+                
+                System.out.println( "All items: " + rep.getAllItems().get(0).getName());
 	}
 }

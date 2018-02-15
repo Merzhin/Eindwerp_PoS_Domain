@@ -5,38 +5,50 @@
  */
 package domain;
 
+import ch.qos.logback.core.CoreConstants;
+import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
- * @author Pieter
+ * @author PC
  */
-public class Item {
-    private long _id;
+@Entity
+public class Item implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     private String name;
     private BigDecimal price; 
-    private int _temp;
+    private int temp;
+    
+    
+    public Item ()
+    {
+        this("Init", new BigDecimal(0));
+    }
     
     public Item (String name, BigDecimal price) 
     {
+        
         setName(name);
         setPrice(price);
-        generateID(); // In DB generation? 
+        id = 1;
+        System.out.println(id);
     }
     
-    public int generateID() 
-    {
-        //TODO
-        return 0;
-    } 
-    
-    
-    public long getID() {
-        return _id;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(long ID) {
-        this._id = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,6 +66,14 @@ public class Item {
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
-    
+
+    public int getTemp() {
+        return temp;
+    }
+
+    public void setTemp(int temp) {
+        this.temp = temp;
+    }
+
     
 }
