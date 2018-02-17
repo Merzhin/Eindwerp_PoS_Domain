@@ -153,6 +153,32 @@ public class StockItemTest {
         assertFalse(stockItem1.equals(stockItem2));
     }
     
+    @Test
+    public void increment_Succes()
+    {
+        stockItem.increment(2);
+        assertEquals(2, stockItem.getAmount());
+    }
+    
+    
+    @Test
+    public void decrement_Succes()
+    {
+        stockItem.decrement(1);
+        assertEquals(-1, stockItem.getAmount());
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void increment_Negative_Number_Fail()
+    {
+        stockItem.increment(-1);
+    }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void decrement_Negative_Number_Fail()
+    {
+        stockItem.decrement(-1);
+    }
     
     
     

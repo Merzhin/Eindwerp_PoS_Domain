@@ -5,14 +5,33 @@
  */
 package domain;
 
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 /**
  *
  * @author PC
  */
-public class StockItem {
+@Entity
+public class StockItem implements Serializable {
     
-    Item item;
-    int amount;
+    @Column
+    private Item item;
+    @Column
+    private int amount;
+    @Column
+    private Long id;
+    @Column
+    private Stock stock;
     
     public StockItem(Item item, int amount)
     {
@@ -48,7 +67,34 @@ public class StockItem {
         if (amount < 0) throw new IllegalArgumentException("Amount needs to be higher than or equal to 0");
         this.amount = amount;
     }
+
     
+    @ManyToOne
+    @JoinColumn(name = "stock_id")
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+    
+    
+    
+    public void increment(int amount) 
+    {
+        if (amount < 0) throw new IllegalArgumentException("Amount has to be positive, please use the decrement function");
+        this.amount += amount;
+    }
+    
+    public void decrement(int amount)
+    {
+        if (amount < 0) throw new IllegalArgumentException("Amount has to be positive, please use the increment function");
+        // TODO             if (amount > this.amount)               ask client how to handle
+        this.amount -= amount;
+    }
+            
+            
     @Override
     public boolean equals(Object object)
     {
@@ -65,6 +111,15 @@ public class StockItem {
             }
         }
         return false;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
     
