@@ -157,6 +157,19 @@ public class ItemTest {
         assertFalse(testItem1.equals(testItem2));
     }
     
+    public void equals_Fail_Test2() 
+    {
+        Item testItem1 = new Item("Beer", new BigDecimal(2.00), "Beer from here");
+        Item testItem2 = new Item("Beer", new BigDecimal(2.01), "Beer from here");
+        assertFalse(testItem1.equals(testItem2));
+    }
+    
+    public void equals_Fail_Test3() 
+    {
+        Item testItem1 = new Item("Beer", new BigDecimal(2.00), "Beer from here");
+        Item testItem2 = new Item("Beer", new BigDecimal(2.00), "Beer from here000");
+        assertFalse(testItem1.equals(testItem2));
+    }
     
     @Test 
     public void equals_Succes_Test() 

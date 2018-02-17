@@ -22,7 +22,7 @@ public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    private long id;
+    private long id; //TODO 
     private String name;
     private BigDecimal price; 
     private String description;
