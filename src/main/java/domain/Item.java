@@ -22,11 +22,10 @@ public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
     private BigDecimal price; 
-    private int temp;
+    private String description;
     
     
     public Item ()
@@ -34,20 +33,24 @@ public class Item implements Serializable {
         this("Init", new BigDecimal(0));
     }
     
-    public Item (String name, BigDecimal price) 
+    public Item (String name, BigDecimal price)
     {
-        
-        setName(name);
-        setPrice(price);
-        id = 1;
-        System.out.println(id);
+        this(name, price, "");
     }
     
-    public Long getId() {
+    public Item (String name, BigDecimal price, String description) 
+    {
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+    }
+    
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) 
+    {
         this.id = id;
     }
 
@@ -55,7 +58,12 @@ public class Item implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) 
+    {
+        if (name == null || name.equals(""))
+        {
+            throw new IllegalArgumentException("Name can't be empty");
+        }
         this.name = name;
     }
 
@@ -63,17 +71,49 @@ public class Item implements Serializable {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(BigDecimal price) 
+    {
+        if (!(price.compareTo(new BigDecimal(0)) >= 0))
+        {
+            throw new IllegalArgumentException("Price has to be higher than or equal to 0");
+        }
         this.price = price;
     }
 
-    public int getTemp() {
-        return temp;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTemp(int temp) {
-        this.temp = temp;
+    public void setDescription(String description) 
+    {
+        if (description == null)
+        {
+            throw new IllegalArgumentException("Description can't be null");
+        }
+        this.description = description;
     }
+    
+    @Override
+    public boolean equals(Object object)
+    {
+        if (!(object instanceof Item))
+        {
+            return false;
+        }
+        else 
+        {
+            Item item = (Item) object;
+            if (this.name.equals(item.getName()) && this.description.equals(item.getDescription()) && this.price.equals(item.getPrice())) 
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+
+    
 
     
 }
