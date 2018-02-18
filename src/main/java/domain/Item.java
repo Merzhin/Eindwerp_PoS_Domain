@@ -8,42 +8,38 @@ package domain;
 import ch.qos.logback.core.CoreConstants;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
-    private Long id; //TODO 
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @Column(name = "name", nullable = false)
     private String name;
+    
+    @Column(name = "price", nullable = false)
     private BigDecimal price; 
+    
+    @Column(name = "description", nullable = true)
     private String description;
     
     
-    public Item ()
-    {
-        this("Init", new BigDecimal(0));
-    }
-    
-    public Item (String name, BigDecimal price)
-    {
-        this(name, price, "");
-    }
-    
-    public Item (String name, BigDecimal price, String description) 
-    {
-        setName(name);
-        setPrice(price);
-        setDescription(description);
-    }
+    public Item (){}
     
     public Long getId() {
         return id;
@@ -51,6 +47,7 @@ public class Item implements Serializable {
 
     public void setId(Long id) 
     {
+        if (id == null) throw new IllegalArgumentException("Id can't be null");
         this.id = id;
     }
 
@@ -60,10 +57,8 @@ public class Item implements Serializable {
 
     public void setName(String name) 
     {
-        if (name == null || name.equals(""))
-        {
-            throw new IllegalArgumentException("Name can't be empty");
-        }
+        if (name == null) throw new IllegalArgumentException("Name can't be empty");
+        if (name.trim().isEmpty()) throw new IllegalArgumentException("Name can't be empty");
         this.name = name;
     }
 
@@ -73,10 +68,7 @@ public class Item implements Serializable {
 
     public void setPrice(BigDecimal price) 
     {
-        if (!(price.compareTo(new BigDecimal(0)) >= 0))
-        {
-            throw new IllegalArgumentException("Price has to be higher than or equal to 0");
-        }
+        if (!(price.compareTo(new BigDecimal(0)) >= 0)) throw new IllegalArgumentException("Price has to be higher than or equal to 0");
         this.price = price;
     }
 
@@ -86,29 +78,19 @@ public class Item implements Serializable {
 
     public void setDescription(String description) 
     {
-        if (description == null)
-        {
-            throw new IllegalArgumentException("Description can't be null");
-        }
+        if (description == null) throw new IllegalArgumentException("Description can't be null");
         this.description = description;
     }
     
     @Override
     public boolean equals(Object object)
     {
-        if (!(object instanceof Item))
-        {
-            return false;
-        }
-        else 
-        {
-            Item item = (Item) object;
-            if (this.name.equals(item.getName()) && this.description.equals(item.getDescription()) && this.price.equals(item.getPrice())) 
-            {
-                return true;
-            }
-        }
-        return false;
+        if (!(object instanceof Item)) return false;
+        Item item = (Item) object;
+        if (!this.name.equals(item.getName())) return false;
+        if (!this.description.equals(item.getDescription())) return false;
+        if (!this.price.equals(item.getPrice())) return false;
+        return true;
     }
     
     

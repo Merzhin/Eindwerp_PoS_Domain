@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 
 
@@ -22,13 +23,18 @@ import javax.persistence.OneToMany;
  * @author PC
  */
 @Entity
+@Table
 public class Stock implements Serializable{
-
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     Map<Long, StockItem> stock;
+
+    public Stock() {
+    }
     
-    
-    @OneToMany(mappedBy = "StockItem", cascade = CascadeType.ALL)
     public Map<Long, StockItem> getStock() {
         return stock;
     }
@@ -37,8 +43,6 @@ public class Stock implements Serializable{
         this.stock = stock;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
         return id;
     }

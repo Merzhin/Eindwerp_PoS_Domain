@@ -16,40 +16,30 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author PC
  */
 @Entity
+@Table
 public class StockItem implements Serializable {
     
-    @Column
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    
+    @OneToOne
     private Item item;
+    
     @Column
     private int amount;
-    @Column
-    private Long id;
-    @Column
-    private Stock stock;
-    
-    public StockItem(Item item, int amount)
-    {
-        setItem(item);
-        setAmount(amount);
-    }
-    
-    public StockItem(Item item) 
-    {
-        this(item, 0);
-    }
     
     public StockItem()
     {
-        this(new Item(), 0);
     }
             
-
     public Item getItem() {
         return item;
     }
@@ -66,20 +56,7 @@ public class StockItem implements Serializable {
     public void setAmount(int amount) {
         if (amount < 0) throw new IllegalArgumentException("Amount needs to be higher than or equal to 0");
         this.amount = amount;
-    }
-
-    
-    @ManyToOne
-    @JoinColumn(name = "stock_id")
-    public Stock getStock() {
-        return stock;
-    }
-
-    public void setStock(Stock stock) {
-        this.stock = stock;
-    }
-    
-    
+    }    
     
     public void increment(int amount) 
     {
@@ -90,7 +67,7 @@ public class StockItem implements Serializable {
     public void decrement(int amount)
     {
         if (amount < 0) throw new IllegalArgumentException("Amount has to be positive, please use the increment function");
-        // TODO             if (amount > this.amount)               ask client how to handle
+        // TODO if (amount > this.amount), ask client how to handle
         this.amount -= amount;
     }
             
@@ -113,7 +90,6 @@ public class StockItem implements Serializable {
         return false;
     }
 
-    @Id
     public Long getId() {
         return id;
     }
