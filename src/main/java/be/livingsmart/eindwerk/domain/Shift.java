@@ -44,7 +44,7 @@ public class Shift
     
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="supervisor")
-    private User supervisor; 
+    private UserBean supervisor; 
     
     @OneToMany(mappedBy="shift")
     @MapKey(name="id")
@@ -82,11 +82,11 @@ public class Shift
         this.endTime = endTime;
     }
 
-    public User getSupervisor() {
+    public UserBean getSupervisor() {
         return supervisor;
     }
 
-    public void setSupervisor(User supervisor) {
+    public void setSupervisor(UserBean supervisor) {
         this.supervisor = supervisor;
     }
 

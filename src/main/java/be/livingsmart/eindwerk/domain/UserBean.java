@@ -21,7 +21,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
  */
 @Entity
 @Table
-public class User 
+public class UserBean
 {
     
     @Id
