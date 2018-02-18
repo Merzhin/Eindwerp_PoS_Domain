@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package be.livingsmart.eindwerk.domain;
 
 import java.sql.Date;
 import java.sql.Time;

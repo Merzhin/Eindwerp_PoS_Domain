@@ -3,16 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domain;
+package be.livingsmart.eindwerk.domain;
 
-import java.util.Map;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapKey;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,19 +20,20 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Order 
+public class OrderedItem 
 {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(mappedBy="order")
-    @MapKey(name="id")
-    private Map<Long, OrderedItem> OrderedItems;
+    @OneToOne
+    private Item item;
     
     @ManyToOne
-    private Shift shift;
+    private Order order;
+    
+    @Column(name = "amount", nullable = false)
+    private int amount;
 
     public Long getId() {
         return id;
@@ -43,23 +43,21 @@ public class Order
         this.id = id;
     }
 
-    public Map<Long, OrderedItem> getOrderedItems() {
-        return OrderedItems;
+    public Item getItem() {
+        return item;
     }
 
-    public void setOrderedItems(Map<Long, OrderedItem> OrderedItems) {
-        this.OrderedItems = OrderedItems;
+    public void setItem(Item item) {
+        this.item = item;
     }
 
-    public Shift getShift() {
-        return shift;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setShift(Shift shift) {
-        this.shift = shift;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
     
     
-    
-
 }

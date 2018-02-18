@@ -5,6 +5,8 @@
  */
 package domain;
 
+import be.livingsmart.eindwerk.domain.Item;
+import be.livingsmart.eindwerk.domain.StockItem;
 import java.math.BigDecimal;
 import org.junit.After;
 import org.junit.AfterClass;
