@@ -32,14 +32,14 @@ public class StockItemTest {
 
  
 
-    
+    /*
     @Test
     public void setItem_Succes_Test()
     {
         stockItem.setItem(item);
         
         assertEquals(item, stockItem.getItem());
-    }
+    }*/
     
     @Test(expected = IllegalArgumentException.class)
     public void setItem_Null_Fail_Test()

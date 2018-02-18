@@ -67,7 +67,6 @@ public class User
     {
 
         if(null == hashedPassword || !hashedPassword.startsWith("$2a$")) throw new java.lang.IllegalArgumentException("Invalid hash provided for comparison");
-
         return BCrypt.checkpw(plaintextPassword, hashedPassword);
 
     }
