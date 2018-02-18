@@ -33,7 +33,10 @@ public class StockItem implements Serializable {
     @OneToOne
     private Item item;
     
-    @Column
+    @ManyToOne
+    private Stock stock;
+    
+    @Column(name = "amount", nullable = false)
     private int amount;
     
     public StockItem()
@@ -70,6 +73,16 @@ public class StockItem implements Serializable {
         // TODO if (amount > this.amount), ask client how to handle
         this.amount -= amount;
     }
+
+    public Stock getStock() {
+        return stock;
+    }
+
+    public void setStock(Stock stock) {
+        this.stock = stock;
+    }
+    
+    
             
             
     @Override

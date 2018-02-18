@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,7 +31,9 @@ public class Stock implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    Map<Long, StockItem> stock;
+    @OneToMany(mappedBy="stock")
+    @MapKey(name="id")
+    private Map<Long, StockItem> stock;
 
     public Stock() {
     }
