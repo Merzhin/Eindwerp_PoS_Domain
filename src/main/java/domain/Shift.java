@@ -48,7 +48,7 @@ public class Shift
     
     @OneToMany(mappedBy="shift")
     @MapKey(name="id")
-    private Map<Long, OrderedItem> OrderedItems;
+    private Map<Long, Order> orders;
 
     public Long getId() {
         return id;
@@ -82,13 +82,22 @@ public class Shift
         this.endTime = endTime;
     }
 
-    public Map<Long, OrderedItem> getOrderedItems() {
-        return OrderedItems;
+    public User getSupervisor() {
+        return supervisor;
     }
 
-    public void setOrderedItems(Map<Long, OrderedItem> OrderedItems) {
-        this.OrderedItems = OrderedItems;
+    public void setSupervisor(User supervisor) {
+        this.supervisor = supervisor;
     }
+
+    public Map<Long, Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Map<Long, Order> orders) {
+        this.orders = orders;
+    }
+
     
     
     
