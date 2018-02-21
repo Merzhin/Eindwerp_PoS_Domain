@@ -32,6 +32,7 @@ public class Item implements Serializable {
     @Column(name = "name", nullable = false)
     private String name;
     
+    
     @Column(name = "price", nullable = false)
     private BigDecimal price; 
     

@@ -5,9 +5,11 @@
  */
 package be.livingsmart.eindwerk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,6 +39,7 @@ public class UserBean
     @Column(name = "salt", nullable = false)
     private String salt;
     
+    @JsonIgnore
     @OneToMany(mappedBy = "supervisor")
     private Map<Long, Shift> shifts;
 

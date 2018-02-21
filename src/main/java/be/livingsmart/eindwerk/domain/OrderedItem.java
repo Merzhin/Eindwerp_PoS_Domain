@@ -30,7 +30,7 @@ public class OrderedItem
     private Item item;
     
     @ManyToOne
-    private Order order;
+    private OrderBean order;
     
     @Column(name = "amount", nullable = false)
     private int amount;

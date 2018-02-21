@@ -34,37 +34,40 @@ public class Shift
     private Long id;
     
     @Column(name = "date", nullable = false)
-    private Date date;
+    private Date currentDate;
     
     @Column(name = "startTime", nullable = false)
     private Time startTime;
     
-    @Column(name = "endTime", nullable = false)
+    @Column(name = "endTime", nullable = true)
     private Time endTime;
     
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="supervisor")
     private UserBean supervisor; 
     
-    @OneToMany(mappedBy="shift")
+    @OneToMany(mappedBy="shift", fetch = FetchType.EAGER)
     @MapKey(name="id")
-    private Map<Long, Order> orders;
+    private Map<Long, OrderBean> orders;
 
     public Long getId() {
         return id;
+        
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCurrentDate() {
+        return currentDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCurrentDate(Date currentDate) {
+        this.currentDate = currentDate;
     }
+
+    
 
     public Time getStartTime() {
         return startTime;
@@ -90,11 +93,11 @@ public class Shift
         this.supervisor = supervisor;
     }
 
-    public Map<Long, Order> getOrders() {
+    public Map<Long, OrderBean> getOrders() {
         return orders;
     }
 
-    public void setOrders(Map<Long, Order> orders) {
+    public void setOrders(Map<Long, OrderBean> orders) {
         this.orders = orders;
     }
 

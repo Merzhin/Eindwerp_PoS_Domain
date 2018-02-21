@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Order 
+public class OrderBean 
 {
     
     @Id
