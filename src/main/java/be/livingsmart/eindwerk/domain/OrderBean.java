@@ -5,8 +5,11 @@
  */
 package be.livingsmart.eindwerk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.Map;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,18 +24,19 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class OrderBean 
+public class OrderBean implements Serializable 
 {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy="order", fetch=FetchType.EAGER)
     @MapKey(name="id")
     private Map<Long, OrderedItem> OrderedItems;
     
     @ManyToOne
+    @JsonIgnore
     private Shift shift;
 
     public Long getId() {

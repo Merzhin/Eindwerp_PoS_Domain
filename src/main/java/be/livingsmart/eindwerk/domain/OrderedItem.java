@@ -5,6 +5,8 @@
  */
 package be.livingsmart.eindwerk.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class OrderedItem 
+public class OrderedItem implements Serializable 
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +32,7 @@ public class OrderedItem
     private Item item;
     
     @ManyToOne
+    @JsonIgnore
     private OrderBean order;
     
     @Column(name = "amount", nullable = false)
@@ -58,6 +61,16 @@ public class OrderedItem
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public OrderBean getOrder() {
+        return order;
+    }
+
+    public void setOrder(OrderBean order) {
+        this.order = order;
+    }
+    
+    
     
     
 }

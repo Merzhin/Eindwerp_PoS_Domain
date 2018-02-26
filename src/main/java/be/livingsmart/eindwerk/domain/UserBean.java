@@ -6,6 +6,7 @@
 package be.livingsmart.eindwerk.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
  */
 @Entity
 @Table
-public class UserBean
+public class UserBean implements Serializable
 {
     
     @Id
@@ -33,6 +34,7 @@ public class UserBean
     @Column(name = "name", nullable = false)
     private String name;
     
+    @JsonIgnore
     @Column(name = "hashedPassword", nullable = false)
     private String hashedPassword;
     

@@ -5,6 +5,7 @@
  */
 package be.livingsmart.eindwerk.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Map;
@@ -26,7 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
-public class Shift 
+public class Shift implements Serializable 
 {
     
     @Id
@@ -99,6 +100,10 @@ public class Shift
 
     public void setOrders(Map<Long, OrderBean> orders) {
         this.orders = orders;
+    }
+
+    public void addOrder(OrderBean order) {
+        this.orders.put(order.getId(), order);
     }
 
     
