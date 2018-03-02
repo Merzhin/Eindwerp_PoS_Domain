@@ -50,6 +50,10 @@ public class Shift implements Serializable
     @OneToMany(mappedBy="shift", fetch = FetchType.EAGER)
     @MapKey(name="id")
     private Map<Long, OrderBean> orders;
+    
+    @OneToMany(mappedBy="shift", fetch = FetchType.EAGER)
+    @MapKey(name="shiftItemId")
+    private Map<Long, ShiftItem> shiftItems;
 
     public Long getId() {
         return id;
@@ -105,6 +109,16 @@ public class Shift implements Serializable
     public void addOrder(OrderBean order) {
         this.orders.put(order.getId(), order);
     }
+
+    public Map<Long, ShiftItem> getShiftItems() {
+        return shiftItems;
+    }
+
+    public void setShiftItems(Map<Long, ShiftItem> shiftItems) {
+        this.shiftItems = shiftItems;
+    }
+    
+    
 
     
     

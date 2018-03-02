@@ -34,34 +34,34 @@ public class ItemTest {
     }
     
     
-    
-    
-    @Test
-    public void setPrice_0_EdgeCase_Succes_Test() 
-    {
-        newItem.setPrice(new BigDecimal(0));
-        assertEquals(new BigDecimal(0), newItem.getPrice());
-    }
-    
-    @Test
-    public void setPrice_RandomInt_Succes_Test() 
-    {
-        newItem.setPrice(new BigDecimal(75));
-        assertEquals(new BigDecimal(75), newItem.getPrice());
-    }
-    
-    @Test
-    public void setPrice_RandomDouble_Succes_Test() 
-    {
-        newItem.setPrice(new BigDecimal(75.286455));
-        assertEquals(new BigDecimal(75.286455), newItem.getPrice());
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void setPrice_Negative_Price_Fail_Test() 
-    {
-        newItem.setPrice(new BigDecimal(-1));
-    }
+//    
+//    
+//    @Test
+//    public void setPrice_0_EdgeCase_Succes_Test() 
+//    {
+//        newItem.setPrice(new BigDecimal(0));
+//        assertEquals(new BigDecimal(0), newItem.getPrice());
+//    }
+//    
+//    @Test
+//    public void setPrice_RandomInt_Succes_Test() 
+//    {
+//        newItem.setPrice(new BigDecimal(75));
+//        assertEquals(new BigDecimal(75), newItem.getPrice());
+//    }
+//    
+//    @Test
+//    public void setPrice_RandomDouble_Succes_Test() 
+//    {
+//        newItem.setPrice(new BigDecimal(75.286455));
+//        assertEquals(new BigDecimal(75.286455), newItem.getPrice());
+//    }
+//    
+//    @Test(expected = IllegalArgumentException.class)
+//    public void setPrice_Negative_Price_Fail_Test() 
+//    {
+//        newItem.setPrice(new BigDecimal(-1));
+//    }
     
     @Test
     public void setName_Succes_Test()

@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 /**
@@ -34,10 +35,11 @@ public class Item implements Serializable {
     
     
     @Column(name = "price", nullable = false)
-    private BigDecimal price; 
+    private double price; 
     
     @Column(name = "description", nullable = true)
     private String description;
+    
     
     
     public Item (){}
@@ -62,16 +64,26 @@ public class Item implements Serializable {
         if (name.trim().isEmpty()) throw new IllegalArgumentException("Name can't be empty");
         this.name = name;
     }
+    
+//    public BigDecimal getPrice() {
+//        return price;
+//    }
+//
+//    public void setPrice(BigDecimal price) 
+//    {
+//        if (!(price.compareTo(new BigDecimal(0)) >= 0)) throw new IllegalArgumentException("Price has to be higher than or equal to 0");
+//        this.price = price;
+//    }
 
-    public BigDecimal getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) 
-    {
-        if (!(price.compareTo(new BigDecimal(0)) >= 0)) throw new IllegalArgumentException("Price has to be higher than or equal to 0");
+    public void setPrice(double price) {
         this.price = price;
     }
+    
+    
 
     public String getDescription() {
         return description;
@@ -90,9 +102,10 @@ public class Item implements Serializable {
         Item item = (Item) object;
         if (!this.name.equals(item.getName())) return false;
         if (!this.description.equals(item.getDescription())) return false;
-        if (!this.price.equals(item.getPrice())) return false;
+        if (!(this.price == item.getPrice())) return false;
         return true;
     }
+
     
     
 
