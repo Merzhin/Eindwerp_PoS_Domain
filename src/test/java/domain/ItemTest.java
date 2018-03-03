@@ -82,18 +82,6 @@ public class ItemTest {
         newItem.setName("");
     }
     
-    @Test
-    public void setDescription_Succes_Test()
-    {
-        newItem.setDescription("");
-        assertEquals("", newItem.getDescription());
-    }
-    
-    @Test(expected = IllegalArgumentException.class)
-    public void setDescription_Null_Fail_Test() 
-    {
-        newItem.setDescription(null);
-    }
     
     @Test 
     public void equals_Fail_Test() 

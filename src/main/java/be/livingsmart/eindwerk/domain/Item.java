@@ -37,9 +37,7 @@ public class Item implements Serializable {
     @Column(name = "price", nullable = false)
     private double price; 
     
-    @Column(name = "description", nullable = true)
-    private String description;
-    
+
     
     
     public Item (){}
@@ -65,15 +63,6 @@ public class Item implements Serializable {
         this.name = name;
     }
     
-//    public BigDecimal getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(BigDecimal price) 
-//    {
-//        if (!(price.compareTo(new BigDecimal(0)) >= 0)) throw new IllegalArgumentException("Price has to be higher than or equal to 0");
-//        this.price = price;
-//    }
 
     public double getPrice() {
         return price;
@@ -83,17 +72,7 @@ public class Item implements Serializable {
         this.price = price;
     }
     
-    
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) 
-    {
-        if (description == null) throw new IllegalArgumentException("Description can't be null");
-        this.description = description;
-    }
     
     @Override
     public boolean equals(Object object)
@@ -101,7 +80,6 @@ public class Item implements Serializable {
         if (!(object instanceof Item)) return false;
         Item item = (Item) object;
         if (!this.name.equals(item.getName())) return false;
-        if (!this.description.equals(item.getDescription())) return false;
         if (!(this.price == item.getPrice())) return false;
         return true;
     }
