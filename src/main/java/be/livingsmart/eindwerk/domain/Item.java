@@ -37,7 +37,8 @@ public class Item implements Serializable {
     @Column(name = "price", nullable = false)
     private double price; 
     
-
+    @Column(name = "logoID", nullable = true)
+    private String logoID; 
     
     
     public Item (){}
@@ -71,6 +72,15 @@ public class Item implements Serializable {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public String getLogoID() {
+        return logoID;
+    }
+
+    public void setLogoID(String logoID) {
+        this.logoID = logoID;
+    }
+    
     
 
     
