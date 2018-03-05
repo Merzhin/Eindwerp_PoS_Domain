@@ -6,14 +6,19 @@
 package be.livingsmart.eindwerk.domain;
 
 import ch.qos.logback.core.CoreConstants;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -37,8 +42,13 @@ public class Item implements Serializable {
     @Column(name = "price", nullable = false)
     private double price; 
     
-    @Column(name = "logoID", nullable = true)
-    private String logoID; 
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="logo", nullable=true)
+    private Logo logo;
+    
+    @Column(name = "isFavorite", nullable = false)
+    private boolean isFavorite;
+    
     
     
     public Item (){}
@@ -73,16 +83,23 @@ public class Item implements Serializable {
         this.price = price;
     }
 
-    public String getLogoID() {
-        return logoID;
+    public Logo getLogo() {
+        return logo;
     }
 
-    public void setLogoID(String logoID) {
-        this.logoID = logoID;
+    public void setLogo(Logo logo) {
+        this.logo = logo;
     }
-    
-    
 
+    public boolean isIsFavorite() {
+        return isFavorite;
+    }
+
+    public void setIsFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
+    }
+
+    
     
     @Override
     public boolean equals(Object object)
