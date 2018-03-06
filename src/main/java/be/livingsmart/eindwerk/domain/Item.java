@@ -20,6 +20,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  *
@@ -36,10 +39,13 @@ public class Item implements Serializable {
     private Long id;
     
     @Column(name = "name", nullable = false)
+    @NotNull(message = "{error.no.name}")
+    @NotEmpty(message = "{error.no.name}")
     private String name;
     
     
     @Column(name = "price", nullable = false)
+    @Min(value = 0, message = "{error.negative.price}")
     private double price; 
     
     @OneToOne(fetch = FetchType.EAGER)
