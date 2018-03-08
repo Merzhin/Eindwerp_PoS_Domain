@@ -127,7 +127,7 @@ public class Item implements Serializable {
     }
 
     /**
-     *  Returns the isFavorite {@link Boolean}
+     *  Returns the isFavorite {@link Boolean}, this boolean represents which items go on the main page
      * @return {@link Boolean}
      */
     public boolean isIsFavorite() {
