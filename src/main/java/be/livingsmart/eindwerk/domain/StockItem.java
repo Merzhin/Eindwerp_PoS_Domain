@@ -6,21 +6,18 @@
 package be.livingsmart.eindwerk.domain;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- *
- * @author PC
+ *  Currently this class is not in use. Could be implemented later if the owners want to keep track of stock
+ * @author Pieter
  */
 @Entity
 @Table

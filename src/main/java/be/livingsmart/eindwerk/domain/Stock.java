@@ -7,12 +7,10 @@ package be.livingsmart.eindwerk.domain;
 
 import java.io.Serializable;
 import java.util.Map;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,8 +18,8 @@ import javax.persistence.Table;
 
 
 /**
- *
- * @author PC
+ *  Currently this class is not in use. Could be implemented later if the owners want to keep track of stock
+ * @author Pieter
  */
 @Entity
 @Table

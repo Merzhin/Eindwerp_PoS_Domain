@@ -17,8 +17,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
- *
- * @author PC
+ *  {@link ShiftItem} is linked to one {@link Item} and a {@link Shift}. It has an {@link Integer} (amount). This amount means how many {@link Item}s of this variety were sold during this {@link Shift}
+ * @author Pieter
  */
 @Entity
 @Table
@@ -38,36 +38,66 @@ public class ShiftItem implements Serializable
     @Column(name = "amount", nullable = false)
     private int amount;
 
-    
-    
+    /**
+     *  Returns the {@link Long} id.
+     * @return  {@link Long}
+     */
     public Long getShiftItemId() {
         return shiftItemId;
     }
 
+    /**
+     *  Sets the {@link Long} id, this is generated automatically by JPA
+     * @param shiftItemId   {@link Long}
+     */
     public void setShiftItemId(Long shiftItemId) {
         this.shiftItemId = shiftItemId;
     }
 
+    /**
+     *  Returns the connected {@link Item}
+     * @return  {@link Item}
+     */
     public Item getItem() {
         return item;
     }
 
+    /**
+     *  Sets the connected {@link Item}, this is usually done by the be.livingsmart.eindwerk.OrderController
+     * @param item  {@link Item}
+     */
     public void setItem(Item item) {
         this.item = item;
     }
 
+    /**
+     *  Gets the {@link Integer} amount (This is the amount of {@link Item}s that are linked to this shift)
+     * @return  {@link Integer}
+     */
     public int getAmount() {
         return amount;
     }
 
+    /**
+     *  Sets the {@link Integer} amount (This is the amound of {@link Item}s that are linked to this shift). This is usually done by be.livingsmart.eindwerk.OrderController
+     * @param amount    {@link Integer}
+     */
     public void setAmount(int amount) {
         this.amount = amount;
     }
 
+    /**
+     *  Returns the {@link Shift} object that this {@link ShiftItem} is connected to.
+     * @return  {@link Shift}
+     */
     public Shift getShift() {
         return shift;
     }
 
+    /**
+     *  Sets the {@link Shift} object that this {@link ShiftItem} is connected to. This is usually done by be.livingsmart.eindwerk.OrderController
+     * @param shift {@link Shift}
+     */
     public void setShift(Shift shift) {
         this.shift = shift;
     }
