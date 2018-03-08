@@ -16,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 /**
@@ -32,6 +34,8 @@ public class UserBean implements Serializable
     private Long id;
     
     @Column(name = "name", nullable = false)
+    @NotNull(message = "{error.no.name}")
+    @NotEmpty(message = "{error.no.name}")
     private String name;
     
     @JsonIgnore
