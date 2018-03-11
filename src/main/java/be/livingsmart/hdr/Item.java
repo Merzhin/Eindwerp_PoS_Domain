@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.livingsmart.eindwerk.domain;
+package be.livingsmart.hdr;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -51,11 +51,6 @@ public class Item implements Serializable {
     
     @Column(name = "isFavorite", nullable = false)
     private boolean isFavorite;
-    
-    /**
-     *  Base empty constuctor for {@link Item}
-     */
-    public Item (){}
     
     /**
      *  Returns the id
@@ -142,15 +137,14 @@ public class Item implements Serializable {
         this.isFavorite = isFavorite;
     }
 
-    
-    
     @Override
     public boolean equals(Object object)
     {
-        if (!(object instanceof Item)) return false;
+        if (object == null) return false;
+        if ((object instanceof Item) == false) return false;
         Item item = (Item) object;
-        if (!this.name.equals(item.getName())) return false;
-        if (!(this.price == item.getPrice())) return false;
+        if (this.name.equals(item.getName()) == false) return false;
+        if ((this.price != item.getPrice())) return false;
         return true;
     }
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.livingsmart.eindwerk.domain;
+package be.livingsmart.hdr;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -35,10 +35,6 @@ public class StockItem implements Serializable {
     
     @Column(name = "amount", nullable = false)
     private int amount;
-    
-    public StockItem()
-    {
-    }
             
     public Item getItem() {
         return item;

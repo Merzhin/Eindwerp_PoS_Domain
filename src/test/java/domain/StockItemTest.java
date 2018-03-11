@@ -5,13 +5,9 @@
  */
 package domain;
 
-import be.livingsmart.eindwerk.domain.Item;
-import be.livingsmart.eindwerk.domain.StockItem;
-import java.math.BigDecimal;
-import org.junit.After;
-import org.junit.AfterClass;
+import be.livingsmart.hdr.Item;
+import be.livingsmart.hdr.StockItem;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -20,7 +16,6 @@ import static org.junit.Assert.*;
  * @author PC
  */
 public class StockItemTest {
-    
     StockItem stockItem; 
     Item item;
     
@@ -31,76 +26,34 @@ public class StockItemTest {
         item = new Item();
     }
     
-
- 
-
-    /*
-    @Test
-    public void setItem_Succes_Test()
-    {
-        stockItem.setItem(item);
-        
-        assertEquals(item, stockItem.getItem());
-    }*/
-    
     @Test(expected = IllegalArgumentException.class)
-    public void setItem_Null_Fail_Test()
+    public void setItemFailsOnNull()
     {
         stockItem.setItem(null);
     }
     
     @Test
-    public void setAmount_Succes_Test()
+    public void setAmountSuccess()
     {
         stockItem.setAmount(75);
         assertEquals(75, stockItem.getAmount());
     }
     
     @Test
-    public void setAmount_EdgeCase_Succes_Test()
+    public void setAmountEdgeCaseSuccess()
     {
         stockItem.setAmount(0);
         assertEquals(0, stockItem.getAmount());
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void setAmount_Negative_Amount_Fail_Test()
+    public void setAmountNegativeAmountFails()
     {
         stockItem.setAmount(-15);
     }
     
     @Test
-    public void equals_Succes_Test() 
-    {
-        
-    }
-    
-    @Test
-    public void equals_Fail_Test1() 
-    {
-        
-    }
-    
-    @Test
-    public void equals_Fail_Test2() 
-    {
-        
-    }
-    
-    @Test
-    public void equals_Fail_Test3() 
-    {
-        
-    }
-    
-    @Test
-    public void equals_Fail_Test4() 
-    {
-        
-    }
-    
-    @Test
-    public void increment_Succes()
+    public void incrementSuccess()
     {
         stockItem.increment(2);
         assertEquals(2, stockItem.getAmount());
@@ -108,20 +61,20 @@ public class StockItemTest {
     
     
     @Test
-    public void decrement_Succes()
+    public void decrementSuccess()
     {
         stockItem.decrement(1);
         assertEquals(-1, stockItem.getAmount());
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void increment_Negative_Number_Fail()
+    public void incrementNegativeNumberFails()
     {
         stockItem.increment(-1);
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void decrement_Negative_Number_Fail()
+    public void decrementNegativeNumberFails()
     {
         stockItem.decrement(-1);
     }

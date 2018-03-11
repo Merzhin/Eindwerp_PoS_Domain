@@ -5,13 +5,8 @@
  */
 package domain;
 
-import be.livingsmart.eindwerk.domain.Item;
-import java.math.BigDecimal;
-import jdk.Exported;
-import org.junit.After;
-import org.junit.AfterClass;
+import be.livingsmart.hdr.Item;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -21,47 +16,13 @@ import static org.junit.Assert.*;
  */
 public class ItemTest {
     
-    Item newItem;
-    
-    public ItemTest() {
-    }
-    
+    private Item newItem;    
     
     @Before
     public void setUp() 
     {
         newItem = new Item();
     }
-    
-    
-//    
-//    
-//    @Test
-//    public void setPrice_0_EdgeCase_Succes_Test() 
-//    {
-//        newItem.setPrice(new BigDecimal(0));
-//        assertEquals(new BigDecimal(0), newItem.getPrice());
-//    }
-//    
-//    @Test
-//    public void setPrice_RandomInt_Succes_Test() 
-//    {
-//        newItem.setPrice(new BigDecimal(75));
-//        assertEquals(new BigDecimal(75), newItem.getPrice());
-//    }
-//    
-//    @Test
-//    public void setPrice_RandomDouble_Succes_Test() 
-//    {
-//        newItem.setPrice(new BigDecimal(75.286455));
-//        assertEquals(new BigDecimal(75.286455), newItem.getPrice());
-//    }
-//    
-//    @Test(expected = IllegalArgumentException.class)
-//    public void setPrice_Negative_Price_Fail_Test() 
-//    {
-//        newItem.setPrice(new BigDecimal(-1));
-//    }
     
     @Test
     public void setName_Succes_Test()
@@ -81,28 +42,4 @@ public class ItemTest {
     {
         newItem.setName("");
     }
-    
-    
-    @Test 
-    public void equals_Fail_Test() 
-    {
-
-    }
-    
-    public void equals_Fail_Test2() 
-    {
-
-    }
-    
-    public void equals_Fail_Test3() 
-    {
-
-    }
-    
-    @Test 
-    public void equals_Succes_Test() 
-    {
-
-    }
-    
 }

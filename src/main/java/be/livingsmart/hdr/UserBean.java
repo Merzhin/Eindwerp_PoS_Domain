@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.livingsmart.eindwerk.domain;
+package be.livingsmart.hdr;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,9 +40,6 @@ public class UserBean implements Serializable
     @JsonIgnore
     @Column(name = "hashedPassword", nullable = false)
     private String hashedPassword;
-    
-    @Column(name = "salt", nullable = false)
-    private String salt;
     
     @JsonIgnore
     @OneToMany(mappedBy = "supervisor")
@@ -95,9 +91,8 @@ public class UserBean implements Serializable
      * @param plaintextPassword {@link String} Only containing numbers
      */
     public void setHashedPassword(String plaintextPassword) {
-        if (!plaintextPassword.matches("[0-9]+")) throw new IllegalArgumentException("Password can only contain numbers");
-        salt = BCrypt.gensalt(10);
-        this.hashedPassword = BCrypt.hashpw(plaintextPassword, salt);
+        if (plaintextPassword.matches("[0-9]+") == false) throw new IllegalArgumentException("Password can only contain numbers");
+        this.hashedPassword = BCrypt.hashpw(plaintextPassword, BCrypt.gensalt(10));
     }
     
     /**
