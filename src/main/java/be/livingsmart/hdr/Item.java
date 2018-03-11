@@ -141,11 +141,10 @@ public class Item implements Serializable {
     public boolean equals(Object object)
     {
         if (object == null) return false;
-        if ((object instanceof Item) == false) return false;
+        if (!(object instanceof Item)) return false;
         Item item = (Item) object;
-        if (this.name.equals(item.getName()) == false) return false;
-        if ((this.price != item.getPrice())) return false;
-        return true;
+        if (!this.name.equals(item.getName())) return false;
+        return this.price == item.getPrice();
     }
 
     

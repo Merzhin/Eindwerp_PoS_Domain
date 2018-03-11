@@ -25,20 +25,20 @@ public class ItemTest {
     }
     
     @Test
-    public void setName_Succes_Test()
+    public void setNameSucces()
     {
         newItem.setName("Beer");
         assertEquals("Beer", newItem.getName());
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void setName_Null_Fail_Test() 
+    public void setNameNullFails() 
     {
         newItem.setName(null);
     }
     
     @Test(expected = IllegalArgumentException.class)
-    public void setName_Empty_String_Fail_Test() 
+    public void setNameEmptyStringFails() 
     {
         newItem.setName("");
     }

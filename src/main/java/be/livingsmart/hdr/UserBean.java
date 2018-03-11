@@ -91,7 +91,7 @@ public class UserBean implements Serializable
      * @param plaintextPassword {@link String} Only containing numbers
      */
     public void setHashedPassword(String plaintextPassword) {
-        if (plaintextPassword.matches("[0-9]+") == false) throw new IllegalArgumentException("Password can only contain numbers");
+        if (!plaintextPassword.matches("[0-9]+")) throw new IllegalArgumentException("Password can only contain numbers");
         this.hashedPassword = BCrypt.hashpw(plaintextPassword, BCrypt.gensalt(10));
     }
     

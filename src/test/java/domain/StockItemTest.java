@@ -16,8 +16,8 @@ import static org.junit.Assert.*;
  * @author PC
  */
 public class StockItemTest {
-    StockItem stockItem; 
-    Item item;
+    private StockItem stockItem; 
+    private Item item;
     
     @Before
     public void setUp() 
